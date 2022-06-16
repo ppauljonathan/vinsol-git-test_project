@@ -1,0 +1,422 @@
+paul@arch-linux ~/internship/t3
+$ mkdir project1 project2
+
+paul@arch-linux ~/internship/t3
+$ cd project1
+
+paul@arch-linux ~/internship/t3/project1
+$ git init
+hint: Using 'master' as the name for the initial branch. This default branch name
+hint: is subject to change. To configure the initial branch name to use in all
+hint: of your new repositories, which will suppress this warning, call:
+hint:
+hint: 	git config --global init.defaultBranch <name>
+hint:
+hint: Names commonly chosen instead of 'master' are 'main', 'trunk' and
+hint: 'development'. The just-created branch can be renamed via this command:
+hint:
+hint: 	git branch -m <name>
+Initialized empty Git repository in /home/paul/internship/t3/project1/.git/
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git switch -c staging
+Switched to a new branch 'staging'
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ nvim test1
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git commit -m "1st commit"
+[staging (root-commit) 5e75623] 1st commit
+ 1 file changed, 1 insertion(+)
+ create mode 100644 test1
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git remote add origin https://github.com/ppauljonathan/vinsol-git-test_project.git
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git push -u origin staging
+Username for 'https://github.com': ppauljonathan
+Password for 'https://ppauljonathan@github.com':
+Enumerating objects: 3, done.
+Counting objects: 100% (3/3), done.
+Writing objects: 100% (3/3), 232 bytes | 232.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/ppauljonathan/vinsol-git-test_project.git
+ * [new branch]      staging -> staging
+branch 'staging' set up to track 'origin/staging'.
+
+paul@arch-linux ~/internship/t3/project2
+$ git clone https://github.com/ppauljonathan/vinsol-git-test_project.git .
+Cloning into '.'...
+remote: Enumerating objects: 3, done.
+remote: Counting objects: 100% (3/3), done.
+remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
+Receiving objects: 100% (3/3), done.
+
+paul@arch-linux ~/internship/t3/project2  (staging)
+$ nvim test1
+
+paul@arch-linux ~/internship/t3/project2  (staging)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project2  (staging)
+$ git commit -m "2nd"
+[staging f6f0dc1] 2nd
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project2  (staging)
+$ git push
+Username for 'https://github.com': ppauljonathan
+Password for 'https://ppauljonathan@github.com':
+Enumerating objects: 5, done.
+Counting objects: 100% (5/5), done.
+Writing objects: 100% (3/3), 258 bytes | 258.00 KiB/s, done.
+Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
+To https://github.com/ppauljonathan/vinsol-git-test_project.git
+   5e75623..f6f0dc1  staging -> staging
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ nvim test1
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git commit -m "3rd"
+[staging 0450020] 3rd
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git push
+Username for 'https://github.com': ppauljonathan
+Password for 'https://ppauljonathan@github.com':
+To https://github.com/ppauljonathan/vinsol-git-test_project.git
+ ! [rejected]        staging -> staging (fetch first)
+error: failed to push some refs to 'https://github.com/ppauljonathan/vinsol-git-test_project.git'
+hint: Updates were rejected because the remote contains work that you do
+hint: not have locally. This is usually caused by another repository pushing
+hint: to the same ref. You may want to first integrate the remote changes
+hint: (e.g., 'git pull ...') before pushing again.
+hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+
+	# This happened because the commits in project1 are not in sync with remote project
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git switch -c master
+Switched to a new branch 'master'
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git branch  -a
+* master
+  staging
+  remotes/origin/staging
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git merge staging
+Already up to date.
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git log
+commit 04500201ba4713665bccc8aa4ffd7df5e4d950f1 (HEAD -> master, staging)
+Author: P Paul Jonathan <ppauljonathan@gmail.com>
+Date:   Thu Jun 16 18:59:39 2022 +0530
+
+    3rd
+
+commit 5e756234755a628ba46e1f6c0e85dead09ee4f96 (origin/staging)
+Author: P Paul Jonathan <ppauljonathan@gmail.com>
+Date:   Thu Jun 16 18:48:31 2022 +0530
+
+    1st commit
+
+
+paul@arch-linux ~/internship/t3/project1  (staging)
+$ git switch -c testing
+Switched to a new branch 'testing'
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ echo 'A is an alphabet' > test1
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git commit -m "A"
+[testing 9d349e6] A
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ echo 'B is an alphabet' > test1
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git commit -m "B"
+[testing 26edfb0] B
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ echo 'C is an alphabet' > test1
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git commit -m "C"
+[testing 78d3978] C
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ echo 'D is an alphabet' > test1
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git commit -m "D"
+[testing e5f6786] D
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ echo 'E is an alphabet' > test1
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git commit -m "E"
+[testing 247ed50] E
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ echo 'F is an alphabet' > test1
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git commit -m "F"
+[testing a68d7dd] F
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ echo 'G is an alphabet' > test1
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git commit -m "G"
+[testing c6033c9] G
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ echo 'H is an alphabet' > test1
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git commit -m "H"
+[testing 9f47ce8] H
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git push --set-upstream origin testing
+Username for 'https://github.com': ppauljonathan
+Password for 'https://ppauljonathan@github.com':
+Enumerating objects: 30, done.
+Counting objects: 100% (30/30), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (10/10), done.
+Writing objects: 100% (30/30), 2.20 KiB | 1.10 MiB/s, done.
+Total 30 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'testing' on GitHub by visiting:
+remote:      https://github.com/ppauljonathan/vinsol-git-test_project/pull/new/testing
+remote:
+To https://github.com/ppauljonathan/vinsol-git-test_project.git
+ * [new branch]      testing -> testing
+branch 'testing' set up to track 'origin/testing'.
+
+paul@arch-linux ~/internship/t3/project1  (testing)
+$ git switch master
+Switched to branch 'master'
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ echo '1 is a number' > test1
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git commit -m "1"
+[master e03cba9] 1
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ echo '2 is a number' > test1
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git commit -m "2"
+[master c542dc3] 2
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ echo '3 is a number' > test1
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git commit -m "3"
+[master 708ab8c] 3
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ echo '4 is a number' > test1
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git commit -m "4"
+[master f5bd6e2] 4
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ echo '5 is a number' > test1
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git commit -m "5"
+[master 4521fd4] 5
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ echo '6 is a number' > test1
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git commit -m "6"
+[master 4922aac] 6
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ echo '7 is a number' > test1
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git commit -m "7"
+[master 6d0226a] 7
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+paul@arch-linux ~/internship/t3/project1  (master)
+$ git push --set-upstream origin master
+Username for 'https://github.com': ppauljonathan
+Password for 'https://ppauljonathan@github.com':
+Enumerating objects: 23, done.
+Counting objects: 100% (23/23), done.
+Delta compression using up to 4 threads
+Compressing objects: 100% (7/7), done.
+Writing objects: 100% (21/21), 1.52 KiB | 1.52 MiB/s, done.
+Total 21 (delta 0), reused 0 (delta 0), pack-reused 0
+remote:
+remote: Create a pull request for 'master' on GitHub by visiting:
+remote:      https://github.com/ppauljonathan/vinsol-git-test_project/pull/new/master
+remote:
+To https://github.com/ppauljonathan/vinsol-git-test_project.git
+ * [new branch]      master -> master
+branch 'master' set up to track 'origin/master'.
+
+paul@arch-linux ~/internship/t3/project1  (master|REBASE 5/7)
+$ git rebase --continue
+Auto-merging test1
+CONFLICT (content): Merge conflict in test1
+error: could not apply 4922aac... 6
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 4922aac... 6
+
+paul@arch-linux ~/internship/t3/project1  (master|REBASE 6/7)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project1  (master|REBASE 6/7)
+$ git commit
+[detached HEAD e9b8bd6] 6
+ 1 file changed, 4 insertions(+)
+
+paul@arch-linux ~/internship/t3/project1  (master|REBASE 6/7)
+$ git rebase --continue
+Auto-merging test1
+CONFLICT (content): Merge conflict in test1
+error: could not apply 6d0226a... 7
+hint: Resolve all conflicts manually, mark them as resolved with
+hint: "git add/rm <conflicted_files>", then run "git rebase --continue".
+hint: You can instead skip this commit: run "git rebase --skip".
+hint: To abort and get back to the state before "git rebase", run "git rebase --abort".
+Could not apply 6d0226a... 7
+
+paul@arch-linux ~/internship/t3/project1  (master|REBASE 7/7)
+$ git rebase --skip
+Successfully rebased and updated refs/heads/master.
+
+paul@arch-linux ~/internship/t3/project2  (staging)
+$ git fetch origin testing
+remote: Enumerating objects: 29, done.
+remote: Counting objects: 100% (29/29), done.
+remote: Compressing objects: 100% (9/9), done.
+remote: Total 27 (delta 0), reused 27 (delta 0), pack-reused 0
+Unpacking objects: 100% (27/27), 1.98 KiB | 405.00 KiB/s, done.
+From https://github.com/ppauljonathan/vinsol-git-test_project
+ * branch            testing    -> FETCH_HEAD
+ * [new branch]      testing    -> origin/testing
+
+paul@arch-linux ~/internship/t3/project2  (staging)
+$ git branch -a
+* staging
+  remotes/origin/HEAD -> origin/staging
+  remotes/origin/staging
+  remotes/origin/testing
+
+paul@arch-linux ~/internship/t3/project2  (staging)
+$ git branch testing -t  origin/testing
+branch 'testing' set up to track 'origin/testing'.
+
+paul@arch-linux ~/internship/t3/project2  (staging)
+$ git switch -c master
+Switched to a new branch 'master'
+
+paul@arch-linux ~/internship/t3/project2  (master)
+$ git merge testing
+Auto-merging test1
+CONFLICT (content): Merge conflict in test1
+Automatic merge failed; fix conflicts and then commit the result.
+
+paul@arch-linux ~/internship/t3/project2  (master|MERGING)
+$ nvim test1
+
+paul@arch-linux ~/internship/t3/project2  (master|MERGING)
+$ git add .
+
+paul@arch-linux ~/internship/t3/project2  (master|MERGING)
+$ git commit
+[master bdcc82a] Merge branch 'testing'
+
+	# The reason why master and testing are different is because the master branch has been just created from staging branch while testing branch was synced from the github repository
