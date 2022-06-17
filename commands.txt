@@ -1,6 +1,10 @@
+Q1)
 paul@arch-linux ~/internship/t3
 $ mkdir project1 project2
 
+also created test_project on github
+
+Q2)
 paul@arch-linux ~/internship/t3
 $ cd project1
 
@@ -18,10 +22,12 @@ hint:
 hint: 	git branch -m <name>
 Initialized empty Git repository in /home/paul/internship/t3/project1/.git/
 
+Q3)
 paul@arch-linux ~/internship/t3/project1  (master)
 $ git switch -c staging
 Switched to a new branch 'staging'
 
+Q4)
 paul@arch-linux ~/internship/t3/project1  (staging)
 $ nvim test1
 
@@ -34,6 +40,7 @@ $ git commit -m "1st commit"
  1 file changed, 1 insertion(+)
  create mode 100644 test1
 
+Q5)
 paul@arch-linux ~/internship/t3/project1  (staging)
 $ git remote add origin https://github.com/ppauljonathan/vinsol-git-test_project.git
 
@@ -49,6 +56,11 @@ To https://github.com/ppauljonathan/vinsol-git-test_project.git
  * [new branch]      staging -> staging
 branch 'staging' set up to track 'origin/staging'.
 
+Q6)
+paul@arch-linux ~/internship/t3/project1
+cd ../project2
+
+Q7)
 paul@arch-linux ~/internship/t3/project2
 $ git clone https://github.com/ppauljonathan/vinsol-git-test_project.git .
 Cloning into '.'...
@@ -57,12 +69,17 @@ remote: Counting objects: 100% (3/3), done.
 remote: Total 3 (delta 0), reused 3 (delta 0), pack-reused 0
 Receiving objects: 100% (3/3), done.
 
+Q8)
+already on staging so no need to switch
+
+Q9)
 paul@arch-linux ~/internship/t3/project2  (staging)
 $ nvim test1
 
 paul@arch-linux ~/internship/t3/project2  (staging)
 $ git add .
 
+Q10)
 paul@arch-linux ~/internship/t3/project2  (staging)
 $ git commit -m "2nd"
 [staging f6f0dc1] 2nd
@@ -79,6 +96,14 @@ Total 3 (delta 0), reused 0 (delta 0), pack-reused 0
 To https://github.com/ppauljonathan/vinsol-git-test_project.git
    5e75623..f6f0dc1  staging -> staging
 
+Q11)
+paul@arch-linux ~/internship/t3/project2  (staging)
+cd ../project1
+
+Q12)
+already on staging branch so no need to switch
+
+Q13)
 paul@arch-linux ~/internship/t3/project1  (staging)
 $ nvim test1
 
@@ -89,7 +114,8 @@ paul@arch-linux ~/internship/t3/project1  (staging)
 $ git commit -m "3rd"
 [staging 0450020] 3rd
  1 file changed, 1 insertion(+), 1 deletion(-)
-
+ 
+Q14)
 paul@arch-linux ~/internship/t3/project1  (staging)
 $ git push
 Username for 'https://github.com': ppauljonathan
@@ -103,8 +129,9 @@ hint: to the same ref. You may want to first integrate the remote changes
 hint: (e.g., 'git pull ...') before pushing again.
 hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 
-	# This happened because the commits in project1 are not in sync with remote project
+This happened because the commits in project1 are not in sync with remote project
 
+Q15)
 paul@arch-linux ~/internship/t3/project1  (staging)
 $ git switch -c master
 Switched to a new branch 'master'
@@ -115,6 +142,7 @@ $ git branch  -a
   staging
   remotes/origin/staging
 
+Q16)
 paul@arch-linux ~/internship/t3/project1  (master)
 $ git merge staging
 Already up to date.
@@ -134,10 +162,12 @@ Date:   Thu Jun 16 18:48:31 2022 +0530
     1st commit
 
 
+Q17)
 paul@arch-linux ~/internship/t3/project1  (staging)
 $ git switch -c testing
 Switched to a new branch 'testing'
 
+Q18)
 paul@arch-linux ~/internship/t3/project1  (testing)
 $ echo 'A is an alphabet' > test1
 
@@ -149,6 +179,7 @@ $ git commit -m "A"
 [testing 9d349e6] A
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+Q19)
 paul@arch-linux ~/internship/t3/project1  (testing)
 $ echo 'B is an alphabet' > test1
 
@@ -226,6 +257,7 @@ $ git commit -m "H"
 [testing 9f47ce8] H
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+Q20)
 paul@arch-linux ~/internship/t3/project1  (testing)
 $ git push --set-upstream origin testing
 Username for 'https://github.com': ppauljonathan
@@ -244,10 +276,12 @@ To https://github.com/ppauljonathan/vinsol-git-test_project.git
  * [new branch]      testing -> testing
 branch 'testing' set up to track 'origin/testing'.
 
+Q21)
 paul@arch-linux ~/internship/t3/project1  (testing)
 $ git switch master
 Switched to branch 'master'
 
+Q22)
 paul@arch-linux ~/internship/t3/project1  (master)
 $ echo '1 is a number' > test1
 
@@ -259,6 +293,7 @@ $ git commit -m "1"
 [master e03cba9] 1
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+Q23)
 paul@arch-linux ~/internship/t3/project1  (master)
 $ echo '2 is a number' > test1
 
@@ -325,6 +360,7 @@ $ git commit -m "7"
 [master 6d0226a] 7
  1 file changed, 1 insertion(+), 1 deletion(-)
 
+Q24)
 paul@arch-linux ~/internship/t3/project1  (master)
 $ git push --set-upstream origin master
 Username for 'https://github.com': ppauljonathan
@@ -342,6 +378,9 @@ remote:
 To https://github.com/ppauljonathan/vinsol-git-test_project.git
  * [new branch]      master -> master
 branch 'master' set up to track 'origin/master'.
+
+Q25)
+skipped most of the rebasing process and only added last 2 here
 
 paul@arch-linux ~/internship/t3/project1  (master|REBASE 5/7)
 $ git rebase --continue
@@ -377,6 +416,11 @@ paul@arch-linux ~/internship/t3/project1  (master|REBASE 7/7)
 $ git rebase --skip
 Successfully rebased and updated refs/heads/master.
 
+Q26)
+paul@arch-linux ~/internship/t3/project1  (master)
+$ cd ../project2
+
+Q27)
 paul@arch-linux ~/internship/t3/project2  (staging)
 $ git fetch origin testing
 remote: Enumerating objects: 29, done.
@@ -399,10 +443,12 @@ paul@arch-linux ~/internship/t3/project2  (staging)
 $ git branch testing -t  origin/testing
 branch 'testing' set up to track 'origin/testing'.
 
+Q28)
 paul@arch-linux ~/internship/t3/project2  (staging)
 $ git switch -c master
 Switched to a new branch 'master'
 
+Q29)
 paul@arch-linux ~/internship/t3/project2  (master)
 $ git merge testing
 Auto-merging test1
@@ -419,4 +465,5 @@ paul@arch-linux ~/internship/t3/project2  (master|MERGING)
 $ git commit
 [master bdcc82a] Merge branch 'testing'
 
-	# The reason why master and testing are different is because the master branch has been just created from staging branch while testing branch was synced from the github repository
+Q30)
+The reason why master and testing are different is because the master branch has been just created from staging branch while testing branch was synced from the github repository
